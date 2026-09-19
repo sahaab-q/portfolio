@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahaab Qaisar — Full-Stack &amp; AI/ML Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FBF7EF;
+    --panel: #FFFFFF;
+    --line: #E5DCC9;
+    --ink: #211C17;
+    --ink-soft: #7A7266;
+    --ink-faint: #B7AE9C;
+    --accent: #7A2E3A;
+    --accent-tint: #F3E2E1;
+    --accent-ink: #FBF7EF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17130F;
+      --panel: #201A15;
+      --line: #382F26;
+      --ink: #F3ECDF;
+      --ink-soft: #A79C8A;
+      --ink-faint: #665C4C;
+      --accent: #E0A2A8;
+      --accent-tint: #2E2020;
+      --accent-ink: #17130F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17130F;
+    --panel: #201A15;
+    --line: #382F26;
+    --ink: #F3ECDF;
+    --ink-soft: #A79C8A;
+    --ink-faint: #665C4C;
+    --accent: #E0A2A8;
+    --accent-tint: #2E2020;
+    --accent-ink: #17130F;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+  .serif { font-family: 'Fraunces', serif; }
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Nav */
+  header.site {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  header.site .inner {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 0;
+  }
+  .monogram {
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 0.95rem;
+  }
+  nav.site-nav { display: flex; gap: 30px; font-size: 0.86rem; }
+  nav.site-nav a {
+    text-decoration: none; color: var(--ink-soft);
+    position: relative; padding-bottom: 3px;
+  }
+  nav.site-nav a::after {
+    content: ""; position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1px; background: var(--accent);
+    transition: width 0.25s ease;
+  }
+  nav.site-nav a:hover { color: var(--ink); }
+  nav.site-nav a:hover::after { width: 100%; }
+
+  /* Hero */
+  .hero {
+    padding: 88px 0 96px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .hero .eyebrow { margin-bottom: 20px; display: block; }
+  .hero h1 {
+    font-weight: 500;
+    font-size: clamp(2.6rem, 5.4vw, 3.9rem);
+    line-height: 1.05;
+    margin: 0 0 22px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    font-style: italic; font-weight: 400; color: var(--accent);
+  }
+  .hero p.role {
+    font-size: 1.06rem;
+    color: var(--ink-soft);
+    margin: 0 0 30px;
+    max-width: 44ch;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 34px; }
+  .hero-tags span {
+    font-size: 0.76rem;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    padding: 6px 13px;
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+  }
+  .hero-links { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -12px var(--accent); }
+  .btn-secondary { border: 1px solid var(--line); color: var(--ink); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Hero card */
+  .card-frame {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 24px;
+    box-shadow: 0 24px 48px -32px rgba(0,0,0,0.25);
+  }
+  .card-frame .dots { display: flex; gap: 6px; margin-bottom: 20px; }
+  .card-frame .dots span {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--line);
+  }
+  .card-frame .row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 11px 0; border-bottom: 1px dashed var(--line);
+    font-size: 0.86rem;
+  }
+  .card-frame .row:last-of-type { border-bottom: none; }
+  .card-frame .row .k { color: var(--ink-soft); }
+  .card-frame .row .v { font-weight: 600; }
+  .card-frame .status {
+    margin-top: 18px; display: flex; align-items: center; gap: 8px;
+    font-size: 0.8rem; color: var(--accent); font-weight: 600;
+  }
+  .card-frame .status .dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 50%, transparent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent); }
+    70% { box-shadow: 0 0 0 9px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px; }
+  .section-head h2 { font-weight: 500; font-size: 1.7rem; margin: 0; }
+  .section-head .eyebrow { margin: 0; }
+
+  /* Work */
+  .project {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 30px;
+    padding: 36px 0;
+    border-top: 1px solid var(--line);
+  }
+  .project:first-of-type { border-top: none; padding-top: 0; }
+  .project .num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 2.1rem;
+    color: var(--ink-faint);
+    line-height: 1;
+  }
+  .project .period { display: block; font-size: 0.76rem; color: var(--ink-soft); margin-bottom: 10px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .project h3 { font-weight: 500; font-size: 1.35rem; margin: 0 0 12px; }
+  .project h3 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .project p { margin: 0 0 16px; color: var(--ink-soft); max-width: 60ch; }
+  .project .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .project .stack span {
+    font-size: 0.74rem; color: var(--ink-soft);
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 2px;
+  }
+  .project a.link {
+    font-size: 0.86rem; font-weight: 600; color: var(--accent);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .project a.link .arrow { transition: transform 0.2s ease; }
+  .project a.link:hover .arrow { transform: translateX(4px); }
+
+  /* Skills */
+  .skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+  .skill-grid .group h4 {
+    font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-soft); margin: 0 0 14px; font-weight: 600;
+    padding-top: 14px; border-top: 2px solid var(--accent);
+  }
+  .skill-grid .group ul { list-style: none; margin: 0; padding: 0; font-size: 0.96rem; }
+  .skill-grid .group li { margin-bottom: 9px; }
+
+  /* Now */
+  .now-box { position: relative; padding-left: 22px; }
+  .now-box::before {
+    content: ""; position: absolute; left: 0; top: 4px; bottom: 4px;
+    width: 2px; background: var(--accent);
+  }
+  .now-box p { margin: 0; color: var(--ink-soft); font-size: 1.02rem; max-width: 58ch; }
+  .now-box strong { color: var(--ink); font-weight: 600; }
+
+  /* Contact */
+  .contact-head { font-weight: 500; font-size: clamp(2rem, 4.4vw, 2.8rem); margin: 0 0 26px; }
+  .contact-head em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .contact-list { display: flex; flex-direction: column; gap: 4px; }
+  .contact-list a {
+    text-decoration: none;
+    font-size: 1.15rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 16px 0; border-top: 1px solid var(--line);
+    transition: padding-left 0.2s ease, color 0.2s ease;
+  }
+  .contact-list a:last-child { border-bottom: 1px solid var(--line); }
+  .contact-list a:hover { padding-left: 10px; color: var(--accent); }
+  .contact-list a .k { font-size: 0.74rem; color: var(--ink-soft); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  footer {
+    padding: 34px 0 56px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--ink-faint); font-size: 0.8rem;
+  }
+
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; padding-top: 56px; }
+    .project { grid-template-columns: 1fr; gap: 10px; }
+    .project .num { display: none; }
+    .skill-grid { grid-template-columns: 1fr 1fr; }
+    nav.site-nav { display: none; }
+  }
+  @media (max-width: 480px) {
+    .skill-grid { grid-template-columns: 1fr; }
+    .contact-list a { flex-direction: column; gap: 4px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-frame .status .dot { animation: none; }
+    .reveal { transition: none; opacity: 1; transform: none; }
+  }
+
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap inner">
+    <div class="monogram">SQ</div>
+    <nav class="site-nav">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#now">Now</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="border-top: none;">
+    <div class="reveal">
+      <span class="eyebrow">Portfolio — 2026</span>
+      <h1 class="serif">Full-stack builder,<br><em>occasional researcher.</em></h1>
+      <p class="role">Fresh Computer Science graduate from UMT, Lahore. I build products end to end on the MERN stack, and switch to Django and PyTorch when the problem needs a model instead of a form.</p>
+      <div class="hero-tags">
+        <span>React · Node · MongoDB</span>
+        <span>Django</span>
+        <span>PyTorch &amp; RAG</span>
+        <span>Lahore, Pakistan</span>
+      </div>
+      <div class="hero-links">
+        <a class="btn btn-primary" href="#work">See the work</a>
+        <a class="btn btn-secondary" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="reveal card-frame" aria-hidden="true">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="row"><span class="k">Role</span><span class="v">Full-Stack &amp; AI/ML</span></div>
+      <div class="row"><span class="k">Based in</span><span class="v">Lahore, PK</span></div>
+      <div class="row"><span class="k">Stack</span><span class="v">MERN · Django</span></div>
+      <div class="row"><span class="k">Focus</span><span class="v">RAG &amp; LLM apps</span></div>
+      <div class="status"><span class="dot"></span> Open to roles</div>
+    </div>
+  </section>
+
+  <section id="work" class="reveal">
+    <div class="section-head">
+      <h2 class="serif">Selected work</h2>
+      <span class="eyebrow">Index</span>
+    </div>
+
+    <div class="project">
+      <div class="num serif">01</div>
+      <div>
+        <span class="period">2025 – 2026 · Final Year Project</span>
+        <h3 class="serif">AI-Powered <em>Interview Preparation</em> Chatbot</h3>
+        <p>A RAG-based interview coach that reads a candidate's CV — PDF or image — and runs a spoken mock interview grounded in their actual background. Led the AI and backend as part of a three-person team: CV parsing with ResNet-18, retrieval with FAISS and sentence-transformers, Gemini 2.5 Flash for the interview dialogue, and live voice through the Web Speech API.</p>
+        <div class="stack">
+          <span>Django</span><span>PyTorch</span><span>FAISS</span><span>Gemini 2.5 Flash</span><span>Web Speech API</span>
+        </div>
+        <a class="link" href="https://web-production-6e820.up.railway.app/" target="_blank" rel="noopener">View deployed app <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="num serif">02</div>
+      <div>
+        <span class="period">2025 · Personal Project</span>
+        <h3 class="serif">Lumière — <em>beauty e-commerce</em> store</h3>
+        <p>A full storefront built solo on the MERN stack, from product catalog to checkout. Covers what a real store needs: admin-managed inventory, authenticated accounts, order history, and a seeder for populating the catalog from scratch.</p>
+        <div class="stack">
+          <span>React + Vite</span><span>Node.js</span><span>Express</span><span>MongoDB Atlas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="reveal">
+    <div class="section-head">
+      <h2 class="serif">Skills &amp; recognition</h2>
+      <span class="eyebrow">Toolkit</span>
+    </div>
+    <div class="skill-grid">
+      <div class="group">
+        <h4>Web</h4>
+        <ul>
+          <li>React &amp; Vite</li>
+          <li>Node.js / Express</li>
+          <li>MongoDB</li>
+          <li>Django</li>
+        </ul>
+      </div>
+      <div class="group">
+        <h4>AI / ML</h4>
+        <ul>
+          <li>PyTorch (ResNet-18)</li>
+          <li>RAG pipelines</li>
+          <li>FAISS &amp; embeddings</li>
+          <li>LLM APIs (Gemini)</li>
+        </ul>
+      </div>
+      <div class="group">
+        <h4>Recognition</h4>
+        <ul>
+          <li>PNY MERN Stack certification</li>
+          <li>2nd place, university database competition</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="now" class="reveal">
+    <div class="section-head">
+      <h2 class="serif">Right now</h2>
+      <span class="eyebrow">Status</span>
+    </div>
+    <div class="now-box">
+      <p><strong>Looking for a first role</strong> in MERN stack web development or AI/ML — open to internships and junior positions. Comfortable picking up a codebase fast, and just as happy shipping a feature as training a model.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <h2 class="contact-head serif">Let's build <em>something.</em></h2>
+    <p style="color: var(--ink-soft); max-width: 50ch; margin: 0 0 8px;">Best reached by email — happy to talk about roles, projects, or MERN vs. Django.</p>
+    <div class="contact-list">
+      <a href="mailto:sahaab926@gmail.com"><span class="serif">sahaab926@gmail.com</span><span class="k">Email</span></a>
+      <a href="https://github.com/sahaab-q" target="_blank" rel="noopener"><span class="serif">github.com/sahaab-q</span><span class="k">GitHub</span></a>
+      <a href="https://www.linkedin.com/in/sahaab-qaisar-4233b7275/" target="_blank" rel="noopener"><span class="serif">in/sahaab-qaisar</span><span class="k">LinkedIn</span></a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Sahaab Qaisar</span>
+    <span>Lahore, Pakistan</span>
+  </footer>
+
+</div>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
